@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fontenelle.helpdesk.domain.dtos.TecnicoDTO;
 import com.fontenelle.helpdesk.domain.enums.Perfil;
 
 
@@ -19,6 +20,18 @@ public class Tecnico extends Pessoa {
 	@OneToMany(mappedBy = "tecnico")
 	private List<Chamado> chamados = new ArrayList<>();
 
+	public Tecnico(TecnicoDTO obj) {
+		super();
+		this.id = obj.getId();
+		this.nome = obj.getNome();
+		this.cpf = obj.getCpf();
+		this.email = obj.getEmail();
+		this.senha = obj.getSenha();
+		this.perfis = obj.getPerfis().stream().map(x -> x.getCodigo()).collect(Collectors.toSet());;
+		this.dataCriacao = obj.getDataCriacao();
+		
+	}
+	
 	public Tecnico() {
 		super();
 		addPerfil(Perfil.CLIENTE);
