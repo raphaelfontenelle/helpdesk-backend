@@ -9,15 +9,20 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fontenelle.helpdesk.domain.Tecnico;
 import com.fontenelle.helpdesk.domain.enums.Perfil;
+import javax.validation.constraints.NotNull;
 
 public class TecnicoDTO  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	protected Integer id;
+	@NotNull(message = "Campo NOME não nullo")
 	protected String nome;
+	@NotNull(message = "Campo CPF não nullo")
 	protected String cpf;
+	@NotNull(message = "Campo EMAIL não nullo")
 	protected String email;
+	@NotNull(message = "Campo SENHA não nullo")
 	protected String senha;
 	protected Set<Integer> perfis = new HashSet<>();
 	
