@@ -16,17 +16,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fontenelle.helpdesk.domain.enums.Perfil;
 
 @Entity()
 public abstract class Pessoa implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
 	protected String nome;
 	
+	@CPF
 	@Column(unique = true)
 	protected String cpf;
 	

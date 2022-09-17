@@ -25,9 +25,8 @@ public class DBService {
 	private ChamadoRepository chamadoRepository;
 	
 	public void instanciaDB() {
-		// TODO Auto-generated method stub
-		Tecnico tec1 = new Tecnico(null,"fontenelle", "09555004781", "raphaelfontenelle@gmail.com", "123");
-		Cliente cli1 = new Cliente(null, "Linux","09555004782","raphaelfontenelle2@gmail.com", "123");
+		Tecnico tec1 = new Tecnico(null,"fontenelle", "487.362.010-49", "raphaelfontenelle@gmail.com", "123");
+		Cliente cli1 = new Cliente(null, "Linux","237.302.070-08","raphaelfontenelle2@gmail.com", "123");
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamdo 01", "Primeiro Chamado", tec1, cli1);
 
 		tecnicoRepository.saveAll(Arrays.asList(tec1));
