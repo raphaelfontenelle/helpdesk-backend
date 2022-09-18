@@ -15,29 +15,47 @@ import com.fontenelle.helpdesk.domain.enums.Prioridade;
 import com.fontenelle.helpdesk.domain.enums.Status;
 
 @Entity
-public class Chamado implements Serializable{
-
-	
+public class Chamado implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataAbertura = LocalDate.now();
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataFechamento;
-	private Prioridade prioridade; 
+
+	private Prioridade prioridade;
 	private Status status;
 	private String titulo;
-	private String obsevacoes;
+	private String observacoes;
+
 	@ManyToOne
 	@JoinColumn(name = "tecnico_id")
 	private Tecnico tecnico;
+
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
-	
+
+	public Chamado() {
+		super();
+	}
+
+	public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String observacoes, Tecnico tecnico,
+			Cliente cliente) {
+		super();
+		this.id = id;
+		this.prioridade = prioridade;
+		this.status = status;
+		this.titulo = titulo;
+		this.observacoes = observacoes;
+		this.tecnico = tecnico;
+		this.cliente = cliente;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -62,12 +80,12 @@ public class Chamado implements Serializable{
 		this.dataFechamento = dataFechamento;
 	}
 
-	public Prioridade getPrioridDE() {
+	public Prioridade getPrioridade() {
 		return prioridade;
 	}
 
-	public void setPrioridDE(Prioridade prioridDE) {
-		this.prioridade = prioridDE;
+	public void setPrioridade(Prioridade prioridade) {
+		this.prioridade = prioridade;
 	}
 
 	public Status getStatus() {
@@ -86,12 +104,12 @@ public class Chamado implements Serializable{
 		this.titulo = titulo;
 	}
 
-	public String getObsevacoes() {
-		return obsevacoes;
+	public String getObservacoes() {
+		return observacoes;
 	}
 
-	public void setObsevacoes(String obsevacoes) {
-		this.obsevacoes = obsevacoes;
+	public void setObservacoes(String observacoes) {
+		this.observacoes = observacoes;
 	}
 
 	public Tecnico getTecnico() {
@@ -110,24 +128,30 @@ public class Chamado implements Serializable{
 		this.cliente = cliente;
 	}
 
-	
-	
-	public Chamado(Integer id, Prioridade prioridade, Status status, String titulo, String obsevacoes, Tecnico tecnico,
-			Cliente cliente) {
-		super();
-		this.id = id;
-		this.prioridade = prioridade;
-		this.status = status;
-		this.titulo = titulo;
-		this.obsevacoes = obsevacoes;
-		this.tecnico = tecnico;
-		this.cliente = cliente;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
-	
-	
-	public Chamado() {
-		super();
-		// TODO Auto-generated constructor stub
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chamado other = (Chamado) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
+
 }
+
