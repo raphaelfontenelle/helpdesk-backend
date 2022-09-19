@@ -3,11 +3,11 @@ package com.fontenelle.helpdesk.domain.dtos;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fontenelle.helpdesk.domain.Chamado;
-import com.fontenelle.helpdesk.domain.enums.Status;
 
 public class ChamadoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
