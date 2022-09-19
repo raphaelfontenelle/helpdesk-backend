@@ -23,9 +23,7 @@ public static Prioridade toEnum(Integer cod) {
 	if (cod == null) {
 		return null;
 	}
-	for
-	
-	(Prioridade x : Prioridade.values()) {
+	for (Prioridade x : Prioridade.values()) {
 		if (cod.equals(x.getCodigo())) {
 			return x;
 		}
