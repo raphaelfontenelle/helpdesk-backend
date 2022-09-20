@@ -10,14 +10,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fontenelle.helpdesk.domain.enums.Perfil;
 
-public class UserSS implements UserDetails{
-
+public class UserSS implements UserDetails {
 	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String email;
 	private String senha;
 	private Collection<? extends GrantedAuthority> authorities;
-	
+
 	public UserSS(Integer id, String email, String senha, Set<Perfil> perfis) {
 		super();
 		this.id = id;
@@ -66,3 +66,4 @@ public class UserSS implements UserDetails{
 	}
 
 }
+

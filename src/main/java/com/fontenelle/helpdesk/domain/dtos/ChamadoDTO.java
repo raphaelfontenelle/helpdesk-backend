@@ -3,7 +3,6 @@ package com.fontenelle.helpdesk.domain.dtos;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
